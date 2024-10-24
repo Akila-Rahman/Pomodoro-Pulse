@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
+    <title>Pomodoro Pulse</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -17,7 +17,7 @@
         }
 
         .container {
-            background-color: #fff;
+            background-color: #F0D7D9;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             text-align: center;
@@ -54,7 +54,7 @@
         }
 
         .circle-progress {
-            stroke: #ff6347;
+            stroke: #FF6584;
             stroke-dasharray: 629;
             stroke-dashoffset: 0;
             transition: stroke-dashoffset 1s linear;
@@ -74,11 +74,12 @@
         }
 
         .session-input, .time-input {
-            margin-bottom: 10px;
+            padding: 10px 10px;
+
         }
 
         .session-input input, .time-input input {
-            width: 100%;
+            width: 80%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -171,7 +172,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pomodoro Timer</h1>
+        <h1>Pomodoro Pulse</h1>
         <div class="session-input">
             <input type="text" id="sessionName" placeholder="Enter session name..." />
         </div>
