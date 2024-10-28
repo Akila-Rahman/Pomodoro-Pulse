@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Pulse</title>
+    <title>Responsive Pomodoro Timer</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -17,7 +17,7 @@
         }
 
         .container {
-            background-color: #F0D7D9;
+            background-color: #EBEEE0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             text-align: center;
@@ -35,18 +35,20 @@
         }
 
         .circle-timer {
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
             position: relative;
         }
 
         .circle-timer svg {
-            transform: rotate(-90deg);
+            width: 100%;
+            height: auto;
         }
 
         .circle-timer circle {
             fill: none;
-            stroke-width: 12;
+            stroke-width: 10;
         }
 
         .circle-background {
@@ -54,8 +56,8 @@
         }
 
         .circle-progress {
-            stroke: #FF6584;
-            stroke-dasharray: 629;
+            stroke: #F50CA0;
+            stroke-dasharray: 565.48; /* Circumference of a circle with r=90 */
             stroke-dashoffset: 0;
             transition: stroke-dashoffset 1s linear;
         }
@@ -74,8 +76,10 @@
         }
 
         .session-input, .time-input {
-            padding: 10px 10px;
+            margin-bottom: 10px;
 
+
+    
         }
 
         .session-input input, .time-input input {
@@ -122,7 +126,7 @@
         }
 
         .history-card {
-            background-color: #e0e0e0;
+            background-color: #EAC5B0;
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 10px;
@@ -155,8 +159,7 @@
 
         @media (max-width: 500px) {
             .circle-timer {
-                width: 150px;
-                height: 150px;
+                max-width: 200px;
             }
 
             .time-display {
@@ -172,7 +175,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pomodoro Pulse</h1>
+        <h1>Pomodoro Timer</h1>
         <div class="session-input">
             <input type="text" id="sessionName" placeholder="Enter session name..." />
         </div>
@@ -181,7 +184,7 @@
         </div>
         <div class="timer">
             <div class="circle-timer">
-                <svg width="200" height="200">
+                <svg viewBox="0 0 200 200">
                     <circle cx="100" cy="100" r="90" class="circle-background"></circle>
                     <circle cx="100" cy="100" r="90" class="circle-progress"></circle>
                 </svg>
@@ -220,8 +223,8 @@
         }
 
         function updateCircleProgress() {
-            const progress = (remainingSeconds / totalSeconds) * 629; // 629 is the stroke-dasharray for a full circle
-            progressCircle.style.strokeDashoffset = 629 - progress;
+            const progress = (remainingSeconds / totalSeconds) * 565.48; // 565.48 is the stroke-dasharray for a circle with r=90
+            progressCircle.style.strokeDashoffset = 565.48 - progress;
         }
 
         function startTimer() {
